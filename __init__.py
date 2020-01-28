@@ -15,7 +15,8 @@ class PIDArduino(KettleController):
     sampleTime = Property.Number("sampletime seconds", True, 10, description="Default: 10. Time for one control loop.")
 
     def run(self):
-        wait_time = sampleTime
+        sampleTime = self.sampleTime
+        wait_time = self.sampleTime
         p = float(self.a_p)
         i = float(self.b_i)
         d = float(self.c_d)
