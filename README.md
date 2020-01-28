@@ -1,3 +1,6 @@
 # Kettle Logic PID Arduino
 
-This is ported form the verson 2.2 and now available as a plugin
+Control your temperature using a PID logic.
+
+Additionally to the original plugin you can adjust the sampletime.
+Furthermore the plugin prevents glitching on heater by checking if heater should stay fully on or fully off during cycle.

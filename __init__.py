@@ -12,10 +12,10 @@ class PIDArduino(KettleController):
     b_i = Property.Number("I", True, 0)
     c_d = Property.Number("D", True, 0)
     d_max_out = Property.Number("max. output %", True, 100)
+	sampleTime = Property.Number("SampleTime", True, 10)
 
     def run(self):
-        sampleTime = 5
-        wait_time = 5
+        wait_time = sampleTime
         p = float(self.a_p)
         i = float(self.b_i)
         d = float(self.c_d)
@@ -26,12 +26,12 @@ class PIDArduino(KettleController):
             heat_percent = pid.calc(self.get_temp(), self.get_target_temp())
             heating_time = sampleTime * heat_percent / 100
             wait_time = sampleTime - heating_time
-            if heating_time == sampleTime:
+            if heating_time >= (sampleTime - 0.5):
                 self.heater_on(100)
-                self.sleep(heating_time)
-            elif wait_time == sampleTime:
+                self.sleep(sampleTime)
+            elif wait_time >= (sampleTime - 0.5):
                 self.heater_off()
-                self.sleep(wait_time)
+                self.sleep(sampleTime)
             else:
                 self.heater_on(100)
                 self.sleep(heating_time)
