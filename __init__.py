@@ -8,11 +8,11 @@ from modules.core.props import Property
 @cbpi.controller
 class PIDArduino(KettleController):
 
-    a_p = Property.Number("P", True, 0)
-    b_i = Property.Number("I", True, 0)
-    c_d = Property.Number("D", True, 0)
-    d_max_out = Property.Number("max. output %", True, 100)
-	sampleTime = Property.Number("SampleTime", True, 10)
+    a_p = Property.Number("P", True, 0, description="Sets the p-parameter of the pid-controller")
+    b_i = Property.Number("I", True, 0, description="Sets the p-parameter of the pid-controller")
+    c_d = Property.Number("D", True, 0, description="Sets the p-parameter of the pid-controller")
+    d_max_out = Property.Number("max. output %", True, 100, description="Default: 100. Sets the max power output.")
+	sampleTime = Property.Number("sampletime seconds", True, 10, description="Default: 10. Time for one control loop.")
 
     def run(self):
         wait_time = sampleTime
