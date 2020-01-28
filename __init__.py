@@ -12,7 +12,7 @@ class PIDArduino(KettleController):
     b_i = Property.Number("I", True, 0, description="Sets the p-parameter of the pid-controller")
     c_d = Property.Number("D", True, 0, description="Sets the p-parameter of the pid-controller")
     d_max_out = Property.Number("max. output %", True, 100, description="Default: 100. Sets the max power output.")
-	sampleTime = Property.Number("sampletime seconds", True, 10, description="Default: 10. Time for one control loop.")
+    sampleTime = Property.Number("sampletime seconds", True, 10, description="Default: 10. Time for one control loop.")
 
     def run(self):
         wait_time = sampleTime
